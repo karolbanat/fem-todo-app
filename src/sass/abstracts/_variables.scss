@@ -4,18 +4,91 @@ $breakpoints: (
 	large: 62em,
 );
 
-$colors: ();
-
-$font-sizes: (
-	small: (),
-	medium: (),
+$themes: (
+	light: (
+		primary: (
+			400: hsl(192 100% 67%),
+			500: hsl(280 87% 65%),
+			600: hsl(220 98% 61%),
+		),
+		neutral: (
+			100: hsl(0 0% 100%),
+			200: hsl(0 0% 98%),
+			300: hsl(236 33% 92%),
+			400: hsl(233 11% 84%),
+			500: hsl(237 20% 80%),
+			600: hsl(236 9% 61%),
+			700: hsl(235 19% 35%),
+		),
+	),
+	dark: (
+		primary: (
+			400: hsl(192 100% 67%),
+			500: hsl(220 98% 61%),
+			600: hsl(280 87% 65%),
+		),
+		neutral: (
+			100: hsl(236 33% 92%),
+			200: hsl(234 39% 85%),
+			300: hsl(234 11% 52%),
+			400: hsl(235 16% 43%),
+			500: hsl(233 14% 35%),
+			600: hsl(237 14% 26%),
+			700: hsl(235 24% 19%),
+			800: hsl(235 21% 11%),
+			900: hsl(0 0% 0%),
+		),
+	),
 );
 
-$font-weights: ();
+$font-sizes: (
+	small: (
+		200: 1.2rem,
+		400: 1.2rem,
+		600: 2rem,
+		button: 1.4rem,
+	),
+	medium: (
+		200: 1.4rem,
+		400: 1.8rem,
+		600: 4rem,
+	),
+);
 
-$border-radius: ();
+$font-weights: (
+	400: 400,
+	700: 700,
+);
 
-$spacings: (
-	em: (),
-	rem: (),
+$border-radius: (
+	200: 0.5rem,
+);
+
+$spacers: (
+	small: (
+		em: (
+			200: 1em,
+		),
+		rem: (
+			200: 1.6rem,
+			250: 1.6rem,
+			275: 1.6rem,
+			300: 1.8rem,
+			400: 2rem,
+			450: 2rem,
+			500: 2.4rem,
+			600: 4rem,
+			650: 4rem,
+			700: 4.8rem,
+		),
+	),
+	medium: (
+		rem: (
+			250: 2rem,
+			275: 2.4rem,
+			450: 2.4rem,
+			650: 4.8rem,
+			700: 7.2rem,
+		),
+	),
 );

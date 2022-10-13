@@ -1,0 +1,8 @@
+@use '../abstracts/mixins' as mxn;
+
+.container {
+	--max-width: 54rem;
+	--padding-inline: var(--spacer-rem-500);
+	margin-inline: auto;
+	width: min(100% - 2 * var(--padding-inline), var(--max-width));
+}
