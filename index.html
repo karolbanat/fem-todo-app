@@ -37,56 +37,70 @@
         <section>
           <h2 class="visually-hidden">Todo form</h2>
           <form class="todo-form">
-            <!-- <button aria-label="Add todo" class="todo-form__submit-btn"></button> -->
+            <button aria-label="Add todo" type="submit" class="check-button">
+              <img src="./dist/images/icon-check.svg" alt="">
+            </button>
             <input type="text" placeholder="Create a new todo..." class="todo-form__input">
           </form>
         </section> <!-- Todo form end -->
         <!-- Main todo app list and filters -->
-        <section>
+        <section class="todo-body">
           <h2 class="visually-hidden">Todo list</h2>
           <ul class="todo-list">
-            <li class="task" data-state="active">
-              <button aria-labelledby="task-1" aria-checked="false" role="checkbox" class="task__check-button"></button>
+            <li class="task" data-status="completed">
+              <button aria-labelledby="task-1" aria-checked="false" role="checkbox" class="check-button">
+                <img src="./dist/images/icon-check.svg" alt="">
+              </button>
               <p id="task-1" class="task__label">Complete online JavaScript course</p>
               <button aria-describedby="task-1" class="task__delete-button">
                 <span class="visually-hidden">Delete</span>
                 <img src="./dist/images/icon-cross.svg" alt="">
               </button>
             </li>
-            <li class="task" data-state="active">
-              <button aria-labelledby="task-2" aria-checked="false" role="checkbox" class="task__check-button"></button>
+            <li class="task" data-status="active">
+              <button aria-labelledby="task-2" aria-checked="false" role="checkbox" class="check-button">
+                <img src="./dist/images/icon-check.svg" alt="">
+              </button>
               <p id="task-2" class="task__label">Jog around the park 3x</p>
               <button aria-describedby="task-2" class="task__delete-button">
                 <span class="visually-hidden">Delete</span>
                 <img src="./dist/images/icon-cross.svg" alt="">
               </button>
             </li>
-            <li class="task" data-state="active">
-              <button aria-labelledby="task-3" aria-checked="false" role="checkbox" class="task__check-button"></button>
+            <li class="task" data-status="active">
+              <button aria-labelledby="task-3" aria-checked="false" role="checkbox" class="check-button">
+                <img src="./dist/images/icon-check.svg" alt="">
+              </button>
               <p id="task-3" class="task__label">10 minutes meditation</p>
               <button aria-describedby="task-3" class="task__delete-button">
                 <span class="visually-hidden">Delete</span>
                 <img src="./dist/images/icon-cross.svg" alt="">
               </button>
             </li>
-            <li class="task" data-state="active">
-              <button aria-labelledby="task-4" aria-checked="false" role="checkbox" class="task__check-button"></button>
+            <li class="task" data-status="active">
+              <button aria-labelledby="task-4" aria-checked="false" role="checkbox" class="check-button">
+                <img src="./dist/images/icon-check.svg" alt="">
+              </button>
               <p id="task-4" class="task__label">Read for 1 hour</p>
               <button aria-describedby="task-4" class="task__delete-button">
                 <span class="visually-hidden">Delete</span>
                 <img src="./dist/images/icon-cross.svg" alt="">
               </button>
             </li>
-            <li class="task" data-state="active">
-              <button aria-labelledby="task-5" aria-checked="false" role="checkbox" class="task__check-button"></button>
+            <li class="task" data-status="active">
+              <button aria-labelledby="task-5" aria-checked="false" role="checkbox" class="check-button">
+                <img src="./dist/images/icon-check.svg" alt="">
+              </button>
               <p id="task-5" class="task__label">Pick up groceries</p>
               <button aria-describedby="task-5" class="task__delete-button">
                 <span class="visually-hidden">Delete</span>
                 <img src="./dist/images/icon-cross.svg" alt="">
               </button>
             </li>
-            <li class="task" data-state="active">
-              <button aria-labelledby="task-6" aria-checked="false" role="checkbox" class="task__check-button"></button>
+            <li class="task" data-status="active">
+              <button aria-labelledby="task-6" aria-checked="false" role="checkbox" class="check-button">
+                <img src="./dist/images/icon-check.svg" alt="">
+              </button>
               <p id="task-6" class="task__label">Complete Todo App on Frontend Mentor</p>
               <button aria-describedby="task-6" class="task__delete-button">
                 <span class="visually-hidden">Delete</span>
@@ -94,7 +108,7 @@
               </button>
             </li>
           </ul>
-          <div class="flex-space-between">
+          <div class="todo-body__footer | flex-space-between">
             <p id="todo-counter" class="todo-counter">5 items left</p>
             <ul data-screen="desktop" class="filters">
               <li><button data-filter="all" class="filter-button active"><span class="visually-hidden">Show</span>

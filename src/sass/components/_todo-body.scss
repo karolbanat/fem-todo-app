@@ -1,0 +1,12 @@
+.todo-body {
+	background-color: var(--bg-todo);
+	border-radius: var(--borr-200);
+	box-shadow: var(--shadow);
+	overflow: hidden;
+
+	&__footer {
+		padding-block: var(--spacer-rem-200);
+		padding-inline: var(--spacer-rem-450);
+		border-top: 1px solid var(--task-border);
+	}
+}

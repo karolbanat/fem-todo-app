@@ -1,0 +1,31 @@
+.check-button {
+	--size: var(--spacer-rem-450);
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: var(--size);
+	aspect-ratio: 1;
+	background-image: var(--bg-task-button);
+	border: none;
+	border-radius: 50%;
+	opacity: 0.25;
+	cursor: pointer;
+	transition: opacity 0.35s ease;
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: calc(var(--size) - 2px);
+		aspect-ratio: 1;
+		background-color: var(--bg-todo);
+		border-radius: inherit;
+	}
+
+	&[aria-checked='true'],
+	&:is(:hover, :focus) {
+		opacity: 1;
+		&::before {
+			opacity: 0;
+		}
+	}
+}
