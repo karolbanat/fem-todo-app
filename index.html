@@ -17,18 +17,110 @@
 </head>
 
 <body>
+  <img src="./dist/images/icon-check.svg" alt="">
+  <header class="header-margin-block-end">
+    <div class="container">
+      <div class="flex-space-between">
+        <h1 class="app-logo">Todo</h1>
+        <button aria-label="Switch to dark theme" class="theme-toggle">
+          <img src="./dist/images/icon-sun.svg" alt="" class="theme-toggle__icon-light">
+          <img src="./dist/images/icon-moon.svg" alt="" class="theme-toggle__icon-dark">
+        </button>
+      </div>
+    </div>
+  </header>
 
-  Todo
+  <main>
+    <div class="container">
+      <div class="app-grid">
+        <!-- Section for todo form -->
+        <section>
+          <h2 class="visually-hidden">Todo form</h2>
+          <form class="todo-form">
+            <!-- <button aria-label="Add todo" class="todo-form__submit-btn"></button> -->
+            <input type="text" placeholder="Create a new todo" class="todo-form__input">
+          </form>
+        </section> <!-- Todo form end -->
+        <!-- Main todo app list and filters -->
+        <section>
+          <h2 class="visually-hidden">Todo list</h2>
+          <ul class="todo-list">
+            <li class="task" data-state="active">
+              <button aria-labelledby="task-1" aria-checked="false" role="checkbox" class="task__check-button"></button>
+              <p id="task-1" class="task__label">Complete online JavaScript course</p>
+              <button aria-describedby="task-1" class="task__delete-button">
+                <span class="visually-hidden">Delete</span>
+                <img src="./dist/images/icon-cross.svg" alt="">
+              </button>
+            </li>
+            <li class="task" data-state="active">
+              <button aria-labelledby="task-2" aria-checked="false" role="checkbox" class="task__check-button"></button>
+              <p id="task-2" class="task__label">Jog around the park 3x</p>
+              <button aria-describedby="task-2" class="task__delete-button">
+                <span class="visually-hidden">Delete</span>
+                <img src="./dist/images/icon-cross.svg" alt="">
+              </button>
+            </li>
+            <li class="task" data-state="active">
+              <button aria-labelledby="task-3" aria-checked="false" role="checkbox" class="task__check-button"></button>
+              <p id="task-3" class="task__label">10 minutes meditation</p>
+              <button aria-describedby="task-3" class="task__delete-button">
+                <span class="visually-hidden">Delete</span>
+                <img src="./dist/images/icon-cross.svg" alt="">
+              </button>
+            </li>
+            <li class="task" data-state="active">
+              <button aria-labelledby="task-4" aria-checked="false" role="checkbox" class="task__check-button"></button>
+              <p id="task-4" class="task__label">Read for 1 hour</p>
+              <button aria-describedby="task-4" class="task__delete-button">
+                <span class="visually-hidden">Delete</span>
+                <img src="./dist/images/icon-cross.svg" alt="">
+              </button>
+            </li>
+            <li class="task" data-state="active">
+              <button aria-labelledby="task-5" aria-checked="false" role="checkbox" class="task__check-button"></button>
+              <p id="task-5" class="task__label">Pick up groceries</p>
+              <button aria-describedby="task-5" class="task__delete-button">
+                <span class="visually-hidden">Delete</span>
+                <img src="./dist/images/icon-cross.svg" alt="">
+              </button>
+            </li>
+            <li class="task" data-state="active">
+              <button aria-labelledby="task-6" aria-checked="false" role="checkbox" class="task__check-button"></button>
+              <p id="task-6" class="task__label">Complete Todo App on Frontend Mentor</p>
+              <button aria-describedby="task-6" class="task__delete-button">
+                <span class="visually-hidden">Delete</span>
+                <img src="./dist/images/icon-cross.svg" alt="">
+              </button>
+            </li>
+          </ul>
+          <div class="flex-space-between">
+            <p id="todo-counter" class="todo-counter">5 items left</p>
+            <ul data-screen="desktop" class="filters">
+              <li><button data-filter="all" class="filter-button active"><span class="visually-hidden">Show</span>
+                  All</button></li>
+              <li><button data-filter="active" class="filter-button"><span class="visually-hidden">Show</span>
+                  Active</button></li>
+              <li><button data-filter="completed" class="filter-button"><span class="visually-hidden">Show</span>
+                  Completed</button></li>
+            </ul>
+            <button class="clear-button">Clear Completed</button>
+          </div>
+        </section> <!-- Main todo app list and filters end-->
+        <!-- Filters for mobile display -->
+        <ul data-screen="mobile" class="filters">
+          <li><button data-filter="all" class="filter-button"><span class="visually-hidden">Show</span> All</button>
+          </li>
+          <li><button data-filter="active" class="filter-button"><span class="visually-hidden">Show</span>
+              Active</button></li>
+          <li><button data-filter="completed" class="filter-button"><span class="visually-hidden">Show</span>
+              Completed</button></li>
+        </ul> <!-- Filters for mobile display end -->
+      </div>
+      <p class="reorder-info">Drag and drop to reorder list</p>
+    </div>
+  </main>
 
-  <!-- Add dynamic number --> items left
-
-  All
-  Active
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
 </body>
 
 </html>
