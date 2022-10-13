@@ -1,0 +1,18 @@
+.todo-form {
+	padding-block: var(--spacer-rem-250);
+	padding-inline: var(--spacer-rem-450);
+	font-size: var(--fz-400);
+	background-color: var(--bg-todo);
+	border-radius: var(--borr-200);
+	// box-shadow: var(--shadow);
+
+	&__input {
+		width: 100%;
+		background-color: inherit;
+		border: none;
+		caret-color: var(--input-caret);
+		&::placeholder {
+			color: var(--input-placeholder);
+		}
+	}
+}
