@@ -1,0 +1,6 @@
+.flex-space-between {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--flex-spacer, 1em);
+}

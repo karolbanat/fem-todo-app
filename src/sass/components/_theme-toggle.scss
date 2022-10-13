@@ -1,0 +1,18 @@
+.theme-toggle {
+	--size: 4.8rem;
+	display: inline-grid;
+	place-items: center;
+	width: var(--size);
+	aspect-ratio: 1;
+	background: none;
+	border: none;
+	cursor: pointer;
+
+	&[data-theme='light'] &__icon-light {
+		display: none;
+	}
+
+	&[data-theme='dark'] &__icon-dark {
+		display: none;
+	}
+}

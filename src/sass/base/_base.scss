@@ -17,11 +17,3 @@ body {
 		@include mxn.theme-dark;
 	}
 }
-
-h1 {
-	font-size: var(--fz-600);
-	font-weight: var(--fw-700);
-	text-transform: uppercase;
-	color: var(--clr-neutral-100-light);
-	letter-spacing: 15px;
-}
