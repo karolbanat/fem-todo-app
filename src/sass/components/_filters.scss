@@ -1,0 +1,25 @@
+@use '../abstracts/mixins' as mxn;
+
+.filters {
+	display: flex;
+	justify-content: center;
+	gap: var(--spacer-rem-300);
+
+	&[data-screen='desktop'] {
+		display: none;
+		@include mxn.mq(medium) {
+			display: flex;
+		}
+	}
+
+	&[data-screen='mobile'] {
+		padding-block: var(--spacer-rem-200);
+		padding-inline: var(--spacer-rem-450);
+		background-color: var(--bg-todo);
+		border-radius: var(--borr-200);
+		box-shadow: var(--shadow);
+		@include mxn.mq(medium) {
+			display: none;
+		}
+	}
+}

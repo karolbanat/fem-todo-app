@@ -1,6 +1,7 @@
+@forward './buttons';
 @forward './app-logo';
-@forward './theme-toggle';
 @forward './todo-form';
 @forward './todo-body';
 @forward './task';
-@forward './check-button';
+@forward './todo-counter';
+@forward './filters';

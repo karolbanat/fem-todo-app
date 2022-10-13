@@ -1,0 +1,7 @@
+@use './filter-button';
+
+.clear-button {
+	@extend .filter-button;
+	font-size: var(--fz-200);
+	font-weight: var(--fw-400);
+}

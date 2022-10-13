@@ -37,13 +37,13 @@
 	--bg-todo: var(--clr-neutral-700-dark);
 	--input-placeholder: var(--clr-neutral-300-dark);
 	--input-caret: var(--clr-primary-600-dark);
-	--bg-task-button: linear-gradient(135deg, var(--clr-primary-400-light), var(--clr-primary-500-light));
+	--bg-task-button: linear-gradient(135deg, var(--clr-primary-400-dark), var(--clr-primary-500-dark));
 	--task-border: var(--clr-neutral-600-dark);
 	--task-completed: var(--clr-neutral-500-dark);
 	--todo-counter: var(--clr-neutral-400-dark);
 	--button-text: var(--clr-neutral-400-dark);
 	--button-text-hover: var(--clr-neutral-200-dark);
-	--button-text-active: var(--clr-primary-600-light);
+	--button-text-active: var(--clr-primary-600-dark);
 	--reorder-info: var(--clr-neutral-400-dark);
 	@include mq(medium) {
 		--bg-image: url('../images/bg-desktop-dark.jpg');
