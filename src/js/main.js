@@ -55,6 +55,11 @@ const createCheckboxButton = taskId => {
 	checkboxButton.setAttribute('role', 'checkbox');
 	checkboxButton.setAttribute('aria-labelledby', taskId);
 	checkboxButton.setAttribute('aria-checked', false);
+	/* check icon */
+	const checkIcon = document.createElement('img');
+	checkIcon.src = './dist/images/icon-check.svg';
+	checkIcon.alt = '';
+	checkboxButton.appendChild(checkIcon);
 	return checkboxButton;
 };
 
