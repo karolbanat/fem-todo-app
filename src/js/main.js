@@ -95,9 +95,12 @@ const handleFormSubmission = e => {
 	e.preventDefault();
 	const inputText = todoFormInput.value;
 	if (!isBlank(inputText)) {
+		todoForm.classList.remove('error');
 		const newTask = createTaskElement({ id: generateId(), content: inputText });
 		todoList.appendChild(newTask);
 		todoFormInput.value = '';
+	} else {
+		todoForm.classList.add('error');
 	}
 };
 
@@ -110,5 +113,6 @@ const isBlank = value => value === '';
 
 themeToggle.addEventListener('click', handleThemeToggle);
 todoFormSubmit.addEventListener('click', handleFormSubmission);
+todoFormInput.addEventListener('focusin', e => todoForm.classList.remove('error'));
 
 loadTheme();

@@ -37,8 +37,11 @@
         <section>
           <h2 class="visually-hidden">Todo form</h2>
           <form class="todo-form">
-            <input aria-label="Create a new todo..." name="todo" type="text" placeholder="Create a new todo..."
-                   class="todo-form__input">
+            <div class="todo-form__input-box">
+              <input aria-label="Create a new todo..." name="todo" type="text" placeholder="Create a new todo..."
+                     class="todo-form__input">
+              <p aria-live="polite" role="alert" class="todo-form__error-msg">Task text cannot be empty</p>
+            </div>
             <button aria-label="Add todo" type="submit" class="check-button">
               <img src="./dist/images/icon-check.svg" alt="">
             </button>
