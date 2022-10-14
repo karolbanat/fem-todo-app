@@ -1,6 +1,7 @@
 .task {
-	display: flex;
-	align-items: center;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: auto 1fr auto;
 	gap: var(--spacer-rem-275);
 	padding-block: var(--spacer-rem-250);
 	padding-inline: var(--spacer-rem-450);
@@ -11,6 +12,7 @@
 	}
 
 	&__label {
+		align-self: center;
 		font-size: var(--fz-400);
 		word-wrap: break-word;
 	}
@@ -21,7 +23,7 @@
 	}
 
 	&__delete-button {
-		display: none;
+		visibility: hidden;
 		margin-inline-start: auto;
 		background: none;
 		border: none;
@@ -29,6 +31,6 @@
 	}
 
 	&:is(:focus-within, :hover) &__delete-button {
-		display: block;
+		visibility: visible;
 	}
 }

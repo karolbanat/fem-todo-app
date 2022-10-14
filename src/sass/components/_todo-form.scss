@@ -1,5 +1,6 @@
 .todo-form {
 	display: flex;
+	flex-direction: row-reverse;
 	align-items: center;
 	gap: var(--spacer-rem-275);
 	padding-block: var(--spacer-rem-250);
