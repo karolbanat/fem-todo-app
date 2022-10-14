@@ -1,5 +1,8 @@
 const themeToggle = document.querySelector('.theme-toggle');
 const todoList = document.querySelector('.todo-list');
+const todoForm = document.querySelector('.todo-form');
+const todoFormInput = todoForm.querySelector('.todo-form__input');
+const todoFormSubmit = todoForm.querySelector('button[type=submit]');
 
 const loadTheme = () => {
 	const theme = localStorage.getItem('theme');
@@ -82,6 +85,25 @@ const createDeleteTaskButton = taskId => {
 	return deleteButton;
 };
 
+// form handling
+const handleFormSubmission = e => {
+	e.preventDefault();
+	const inputText = todoFormInput.value;
+	if (!isBlank(inputText)) {
+		const newTask = createTaskElement({ id: generateId(), content: inputText });
+		todoList.appendChild(newTask);
+		todoFormInput.value = '';
+	}
+};
+
+/* TODO: generating id using uuid */
+const generateId = () => {
+	return Math.random();
+};
+
+const isBlank = value => value === '';
+
 themeToggle.addEventListener('click', handleThemeToggle);
+todoFormSubmit.addEventListener('click', handleFormSubmission);
 
 loadTheme();
