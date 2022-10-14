@@ -16,4 +16,11 @@ body {
 	@media (prefers-color-scheme: dark) {
 		@include mxn.theme-dark;
 	}
+
+	&[data-theme='light'] {
+		@include mxn.theme-light;
+	}
+	&[data-theme='dark'] {
+		@include mxn.theme-dark;
+	}
 }
