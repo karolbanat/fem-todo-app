@@ -13,6 +13,8 @@ body {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: top;
+	// bg-image end
+	transition: background-color 0.35s ease, color 0.35s ease;
 	@media (prefers-color-scheme: dark) {
 		@include mxn.theme-dark;
 	}
