@@ -1,5 +1,6 @@
 import { handleThemeToggle, loadTheme } from './theme';
 import { themeToggle, todoForm, todoFormInput, todoFormSubmit, todoList } from './elements';
+import { v4 as uuidv4 } from 'uuid';
 
 // form handling
 const handleFormSubmission = e => {
