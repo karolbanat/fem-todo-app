@@ -49,6 +49,10 @@ function javaScript(done) {
 			ignore: [/\/node_modules\//],
 		})
 		.bundle()
+		.on('error', function (err) {
+			console.log(err.message);
+			console.log(err.stack);
+		})
 		.pipe(source('main.js'))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({ loadMaps: true }))
