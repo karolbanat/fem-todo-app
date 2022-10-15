@@ -1,7 +1,10 @@
+import { handleTaskSelection, handleTaskDeletion } from './task';
+
 // task creation
-const createTaskElement = ({ id, content }) => {
+const createTaskElement = ({ id, content, status = 'active' }) => {
 	const newTask = document.createElement('li');
 	newTask.classList.add('task');
+	newTask.setAttribute('data-status', status);
 	const checkboxButton = createCheckboxButton(id);
 	const taskLabel = createTaskLabel(id, content);
 	const deleteButton = createDeleteTaskButton(id);
@@ -17,6 +20,7 @@ const createCheckboxButton = taskId => {
 	checkboxButton.setAttribute('role', 'checkbox');
 	checkboxButton.setAttribute('aria-labelledby', taskId);
 	checkboxButton.setAttribute('aria-checked', false);
+	checkboxButton.addEventListener('click', handleTaskSelection);
 	/* check icon */
 	const checkIcon = document.createElement('img');
 	checkIcon.src = './dist/images/icon-check.svg';
@@ -38,6 +42,7 @@ const createDeleteTaskButton = taskId => {
 	const deleteButton = document.createElement('button');
 	deleteButton.classList.add('task__delete-button');
 	deleteButton.setAttribute('aria-describedby', taskId);
+	deleteButton.addEventListener('click', handleTaskDeletion);
 	/* hidden delete text */
 	const deleteText = document.createElement('span');
 	deleteText.classList.add('visually-hidden');

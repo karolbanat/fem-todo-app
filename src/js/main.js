@@ -1,5 +1,6 @@
 import { handleThemeToggle, loadTheme } from './theme';
 import { themeToggle, todoForm, todoFormInput, todoFormSubmit, todoList } from './elements';
+import { createTaskElement } from './elements-creation';
 import { v4 as uuidv4 } from 'uuid';
 
 // form handling
@@ -8,17 +9,13 @@ const handleFormSubmission = e => {
 	const inputText = todoFormInput.value;
 	if (!isBlank(inputText)) {
 		todoForm.classList.remove('error');
-		const newTask = createTaskElement({ id: generateId(), content: inputText });
+		const newTask = createTaskElement({ id: uuidv4(), content: inputText });
+		console.log(newTask);
 		todoList.appendChild(newTask);
 		todoFormInput.value = '';
 	} else {
 		todoForm.classList.add('error');
 	}
-};
-
-/* TODO: generating id using uuid */
-const generateId = () => {
-	return Math.random();
 };
 
 const isBlank = value => value === '';
