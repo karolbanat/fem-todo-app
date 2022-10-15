@@ -22,7 +22,7 @@
 	}
 
 	&[aria-checked='true'],
-	&:is(:hover, :focus) {
+	&:is(:hover, :focus-visible) {
 		opacity: 1;
 		&::before {
 			opacity: 0;

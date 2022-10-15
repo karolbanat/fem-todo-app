@@ -16,14 +16,14 @@ const addTask = (content, status = 'active') => {
 };
 
 const removeTask = taskId => {
-	const removedTask = tasks.filter(task => task.id === taskId)[0] || undefined;
+	const removedTask = tasks.filter(task => task.id === taskId)[0] || {};
 	tasks = tasks.filter(task => task.id !== taskId);
 	saveTasksToLocalStorage();
 	return removedTask;
 };
 
 const changeStatus = (taskId, status) => {
-	const taskToChange = tasks.filter(task => task.id === taskId)[0] || undefined;
+	const taskToChange = tasks.filter(task => task.id === taskId)[0] || {};
 	if (taskToChange) {
 		taskToChange.status = status;
 		saveTasksToLocalStorage();
@@ -33,6 +33,7 @@ const changeStatus = (taskId, status) => {
 
 const loadTasks = () => {
 	loadTasksFromStorage();
+	/* adding task elements to DOM */
 	for (let task of tasks) {
 		const newTask = createTaskElement(task);
 		todoList.appendChild(newTask);

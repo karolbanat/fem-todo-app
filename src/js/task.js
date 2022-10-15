@@ -6,8 +6,9 @@ const handleTaskSelection = e => {
 	const taskStatus = !isChecked ? 'completed' : 'active';
 	button.setAttribute('aria-checked', !isChecked);
 	const parentTask = button.closest('.task');
+	const taskId = parentTask.dataset.id;
 	parentTask.dataset.status = taskStatus;
-	changeStatus(parentTask.dataset.id, taskStatus);
+	changeStatus(taskId, taskStatus);
 };
 
 const handleTaskDeletion = e => {
