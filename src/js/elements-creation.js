@@ -5,7 +5,8 @@ const createTaskElement = ({ id, content, status = 'active' }) => {
 	const newTask = document.createElement('li');
 	newTask.classList.add('task');
 	newTask.setAttribute('data-status', status);
-	const checkboxButton = createCheckboxButton(id);
+	newTask.setAttribute('data-id', id);
+	const checkboxButton = createCheckboxButton(id, status);
 	const taskLabel = createTaskLabel(id, content);
 	const deleteButton = createDeleteTaskButton(id);
 	newTask.appendChild(checkboxButton);
@@ -14,12 +15,13 @@ const createTaskElement = ({ id, content, status = 'active' }) => {
 	return newTask;
 };
 
-const createCheckboxButton = taskId => {
+const createCheckboxButton = (taskId, status) => {
 	const checkboxButton = document.createElement('button');
+	const isChecked = status === 'completed' ? true : false;
 	checkboxButton.classList.add('check-button');
 	checkboxButton.setAttribute('role', 'checkbox');
 	checkboxButton.setAttribute('aria-labelledby', taskId);
-	checkboxButton.setAttribute('aria-checked', false);
+	checkboxButton.setAttribute('aria-checked', isChecked);
 	checkboxButton.addEventListener('click', handleTaskSelection);
 	/* check icon */
 	const checkIcon = document.createElement('img');
