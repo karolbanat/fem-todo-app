@@ -1,5 +1,5 @@
-import { filterBtns, todoList } from './elements';
-import { removeTask } from './task-list';
+import { filterBtns, todoCounter, todoList } from './elements';
+import { getActiveTasksCount, removeTask } from './task-list';
 
 const handleFilterButton = e => {
 	const filter = e.target.dataset.filter;
@@ -42,6 +42,13 @@ const clearCompletedTasks = () => {
 			task.remove();
 		}
 	}
+	updateTodoCounter();
 };
 
-export { filterList, handleFilterButton, handleClearCompletedButton };
+const updateTodoCounter = () => {
+	const activeTasksCount = getActiveTasksCount();
+	const itemsForm = activeTasksCount === 1 ? 'item' : 'items';
+	todoCounter.innerText = `${activeTasksCount} ${itemsForm} left`;
+};
+
+export { filterList, handleFilterButton, handleClearCompletedButton, updateTodoCounter };
