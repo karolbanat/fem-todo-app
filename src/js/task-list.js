@@ -11,7 +11,6 @@ const addTask = (content, status = 'active') => {
 		status,
 	};
 	tasks.push(task);
-	console.log(tasks);
 	saveTasksToLocalStorage();
 	return task;
 };
@@ -20,7 +19,6 @@ const removeTask = taskId => {
 	const removedTask = tasks.find(task => task.id === taskId) || {};
 	tasks = tasks.filter(task => task.id !== taskId);
 	saveTasksToLocalStorage();
-	console.log(tasks);
 	return removedTask;
 };
 
@@ -30,7 +28,6 @@ const changeStatus = (taskId, status) => {
 		taskToChange.status = status;
 		saveTasksToLocalStorage();
 	}
-	console.log(tasks);
 	return taskToChange;
 };
 
