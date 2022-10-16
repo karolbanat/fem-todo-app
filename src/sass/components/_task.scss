@@ -11,6 +11,10 @@
 		border-bottom: 1px solid var(--task-border);
 	}
 
+	&.hidden {
+		display: none;
+	}
+
 	&__label {
 		align-self: center;
 		font-size: var(--fz-400);
