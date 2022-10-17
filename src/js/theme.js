@@ -1,35 +1,19 @@
-import { themeToggle } from './elements';
+import { setTheme } from './dom-updates';
 
 const loadTheme = () => {
 	const theme = localStorage.getItem('theme');
-	if (theme) {
-		document.body.setAttribute('data-theme', theme);
-		themeToggle.dataset.theme = theme;
-	} else {
-		loadPreferedTheme();
-	}
-	return theme;
+	return theme ? setTheme(theme) : loadPreferedTheme();
 };
 
 const loadPreferedTheme = () => {
 	const preferedTheme =
 		window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	changeColorTheme(preferedTheme);
-	return preferedTheme;
-};
-
-const handleThemeToggle = e => {
-	const currentTheme = themeToggle.dataset.theme;
-	const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-	changeColorTheme(newTheme);
-	return newTheme;
+	return changeColorTheme(preferedTheme);
 };
 
 const changeColorTheme = theme => {
-	themeToggle.dataset.theme = theme;
-	document.body.setAttribute('data-theme', theme);
 	localStorage.setItem('theme', theme);
-	return theme;
+	return setTheme(theme);
 };
 
-export { loadTheme, handleThemeToggle };
+export { loadTheme, changeColorTheme };

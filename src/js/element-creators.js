@@ -1,7 +1,13 @@
-import { handleTaskSelection, handleTaskDeletion } from './task';
+import { handleTaskSelection, handleTaskDeletion } from './event-handlers';
+import { TASK_STATES } from './tasks';
+
+const IMAGE_SRC = {
+	check: './dist/images/icon-check.svg',
+	cross: './dist/images/icon-cross.svg',
+};
 
 // task creation
-const createTaskElement = ({ id, content, status = 'active' }) => {
+const createTaskElement = ({ id, content, status }) => {
 	const newTask = document.createElement('li');
 	/* attribute settings */
 	newTask.classList.add('task');
@@ -21,7 +27,7 @@ const createTaskElement = ({ id, content, status = 'active' }) => {
 const createCheckboxButton = (taskId, status) => {
 	const checkboxButton = document.createElement('button');
 	/* check status to see if button should be tagged as checked */
-	const isChecked = status === 'completed' ? true : false;
+	const isChecked = status === TASK_STATES.completed ? true : false;
 	/* attribute settings */
 	checkboxButton.classList.add('check-button');
 	checkboxButton.setAttribute('role', 'checkbox');
@@ -31,7 +37,7 @@ const createCheckboxButton = (taskId, status) => {
 	checkboxButton.addEventListener('click', handleTaskSelection);
 	/* check icon */
 	const checkIcon = document.createElement('img');
-	checkIcon.src = './dist/images/icon-check.svg';
+	checkIcon.src = IMAGE_SRC.check;
 	checkIcon.alt = '';
 	checkboxButton.appendChild(checkIcon);
 	return checkboxButton;
@@ -59,7 +65,7 @@ const createDeleteTaskButton = taskId => {
 	deleteText.innerText = 'Delete';
 	/* cross icon */
 	const deleteImage = document.createElement('img');
-	deleteImage.src = './dist/images/icon-cross.svg';
+	deleteImage.src = IMAGE_SRC.cross;
 	deleteImage.alt = '';
 	/* appending text and image to button */
 	deleteButton.appendChild(deleteText);

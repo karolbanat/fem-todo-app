@@ -1,11 +1,13 @@
-import { todoList } from './elements';
-import { createTaskElement } from './elements-creation';
 import { v4 as uuidv4 } from 'uuid';
-import { updateTodoCounter } from './list-actions';
+import { addTaskToList, updateTodoCounter } from './dom-updates';
 
+const TASK_STATES = {
+	active: 'active',
+	completed: 'completed',
+};
 let tasks = [];
 
-const addTask = (content, status = 'active') => {
+const addTask = (content, status = TASK_STATES.active) => {
 	const task = {
 		id: uuidv4(),
 		content,
@@ -13,7 +15,6 @@ const addTask = (content, status = 'active') => {
 	};
 	tasks.push(task);
 	saveTasksToLocalStorage();
-	updateTodoCounter();
 	return task;
 };
 
@@ -21,7 +22,6 @@ const removeTask = taskId => {
 	const removedTask = tasks.find(task => task.id === taskId) || {};
 	tasks = tasks.filter(task => task.id !== taskId);
 	saveTasksToLocalStorage();
-	updateTodoCounter();
 	return removedTask;
 };
 
@@ -31,21 +31,15 @@ const changeStatus = (taskId, status) => {
 		taskToChange.status = status;
 		saveTasksToLocalStorage();
 	}
-	updateTodoCounter();
 	return taskToChange;
 };
 
-const getActiveTasksCount = () => {
-	return tasks.filter(task => task.status === 'active').length;
-};
+const getActiveTasksCount = () => tasks.filter(task => task.status === TASK_STATES.active).length;
 
 const loadTasks = () => {
 	loadTasksFromStorage();
 	/* adding task elements to DOM */
-	for (let task of tasks) {
-		const newTask = createTaskElement(task);
-		todoList.appendChild(newTask);
-	}
+	for (let task of tasks) addTaskToList(task);
 	updateTodoCounter();
 };
 
@@ -62,4 +56,4 @@ const saveTasksToLocalStorage = () => {
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-export { loadTasks, addTask, removeTask, changeStatus, getActiveTasksCount };
+export {TASK_STATES, loadTasks, addTask, removeTask, changeStatus, getActiveTasksCount };
