@@ -1,4 +1,4 @@
-import { handleTaskSelection, handleTaskDeletion } from './event-handlers';
+import { handleTaskSelection, handleTaskDeletion, handleTaskDragStart } from './event-handlers';
 import { TASK_STATES } from './tasks';
 
 const IMAGE_SRC = {
@@ -13,6 +13,8 @@ const createTaskElement = ({ id, content, status }) => {
 	newTask.classList.add('task');
 	newTask.setAttribute('data-status', status);
 	newTask.setAttribute('data-id', id);
+	newTask.setAttribute('draggable', true);
+	newTask.addEventListener('dragstart', handleTaskDragStart);
 	/* create task elements... */
 	const checkboxButton = createCheckboxButton(id, status);
 	const taskLabel = createTaskLabel(id, content);

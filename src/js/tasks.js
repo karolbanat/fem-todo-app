@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { addTaskToList, updateTodoCounter } from './dom-updates';
+import { todoList } from './elements';
 
 const TASK_STATES = {
 	active: 'active',
@@ -36,6 +37,34 @@ const changeStatus = (taskId, status) => {
 
 const getActiveTasksCount = () => tasks.filter(task => task.status === TASK_STATES.active).length;
 
+const findTaskOnPosition = posY => {
+	for (const task of tasks) {
+		const taskElement = todoList.querySelector(`.task[data-id='${task.id}']`);
+		const taskY = taskElement.offsetTop;
+		const taskYEnd = taskElement.offsetHeight + taskY;
+		if (taskY < posY && posY <= taskYEnd) return taskElement;
+	}
+	return null;
+};
+
+const insertTaskBefore = (relativeTaskId, insertTaskId) => {
+	const taskToMove = removeTask(insertTaskId);
+	const idx = getTaskIndex(relativeTaskId);
+	tasks.splice(Math.max(0, idx), 0, taskToMove);
+	saveTasksToLocalStorage();
+	return idx;
+};
+
+const insertTaskAfter = (relativeTaskId, insertTaskId) => {
+	const taskToMove = removeTask(insertTaskId);
+	const idx = getTaskIndex(relativeTaskId);
+	tasks.splice(Math.min(tasks.length, idx + 1), 0, taskToMove);
+	saveTasksToLocalStorage();
+	return idx;
+};
+
+const getTaskIndex = taskId => tasks.findIndex(task => task.id === taskId);
+
 const loadTasks = () => {
 	loadTasksFromStorage();
 	/* adding task elements to DOM */
@@ -56,4 +85,14 @@ const saveTasksToLocalStorage = () => {
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-export {TASK_STATES, loadTasks, addTask, removeTask, changeStatus, getActiveTasksCount };
+export {
+	TASK_STATES,
+	loadTasks,
+	addTask,
+	removeTask,
+	changeStatus,
+	getActiveTasksCount,
+	findTaskOnPosition,
+	insertTaskBefore,
+	insertTaskAfter,
+};

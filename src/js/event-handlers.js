@@ -1,7 +1,15 @@
 import { changeColorTheme } from './theme';
 import { isBlank } from './helpers';
 import { addTaskToList, filterList, hideShowTask, indicateActiveFilter, updateTodoCounter } from './dom-updates';
-import { addTask, changeStatus, removeTask, TASK_STATES } from './tasks';
+import {
+	addTask,
+	changeStatus,
+	findTaskOnPosition,
+	insertTaskAfter,
+	insertTaskBefore,
+	removeTask,
+	TASK_STATES,
+} from './tasks';
 import { themeToggle, todoForm, todoFormInput, todoList } from './elements';
 import { setCurrentFilter } from './filter-state';
 
@@ -72,6 +80,28 @@ const handleClearCompletedButton = e => {
 	updateTodoCounter();
 };
 
+const handleTaskDragStart = e => {
+	e.dataTransfer.setData('text/plain', e.target.dataset.id);
+};
+
+const handleDragOver = e => {
+	e.preventDefault();
+	e.dataTransfer.dropEffect = 'move';
+};
+
+const handleTaskDrop = e => {
+	e.preventDefault();
+	const mouseY = e.clientY;
+	const draggedTaskId = e.dataTransfer.getData('text/plain');
+	const overTask = findTaskOnPosition(mouseY);
+	if (draggedTaskId === overTask.dataset.id) return;
+
+	const insertPosition = mouseY < overTask.offsetTop + overTask.offsetHeight / 2 ? 'beforebegin' : 'afterend';
+	overTask.insertAdjacentElement(insertPosition, todoList.querySelector(`.task[data-id='${draggedTaskId}']`));
+	if (insertPosition === 'beforebegin') insertTaskBefore(overTask.dataset.id, draggedTaskId);
+	else insertTaskAfter(overTask.dataset.id, draggedTaskId);
+};
+
 export {
 	handleThemeToggle,
 	handleFormSubmission,
@@ -79,4 +109,7 @@ export {
 	handleTaskDeletion,
 	handleFilterButton,
 	handleClearCompletedButton,
+	handleTaskDragStart,
+	handleDragOver,
+	handleTaskDrop,
 };
