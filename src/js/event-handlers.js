@@ -1,6 +1,14 @@
 import { changeColorTheme } from './theme';
 import { isBlank } from './helpers';
-import { addTaskToList, filterList, hideShowTask, indicateActiveFilter, updateTodoCounter } from './dom-updates';
+import {
+	addTaskToList,
+	filterList,
+	getTaskPosition,
+	hideShowTask,
+	indicateActiveFilter,
+	taskReorder,
+	updateTodoCounter,
+} from './dom-updates';
 import {
 	addTask,
 	changeStatus,
@@ -93,13 +101,15 @@ const handleTaskDrop = e => {
 	e.preventDefault();
 	const mouseY = e.clientY;
 	const draggedTaskId = e.dataTransfer.getData('text/plain');
-	const overTask = findTaskOnPosition(mouseY);
-	if (draggedTaskId === overTask.dataset.id) return;
+	const { id: relativeTaskId, constraints } = findTaskOnPosition(mouseY);
+	if (draggedTaskId === relativeTaskId) return;
 
-	const insertPosition = mouseY < overTask.offsetTop + overTask.offsetHeight / 2 ? 'beforebegin' : 'afterend';
-	overTask.insertAdjacentElement(insertPosition, todoList.querySelector(`.task[data-id='${draggedTaskId}']`));
-	if (insertPosition === 'beforebegin') insertTaskBefore(overTask.dataset.id, draggedTaskId);
-	else insertTaskAfter(overTask.dataset.id, draggedTaskId);
+	/* check if the mouse is in the upper or lower part of found task;
+  -1 is for upper part and 1 is for lower part */
+	const insertDirection = mouseY < (constraints.start + constraints.end) / 2 ? -1 : 1;
+	taskReorder(relativeTaskId, draggedTaskId, insertDirection);
+	if (insertDirection === -1) insertTaskBefore(relativeTaskId, draggedTaskId);
+	else insertTaskAfter(relativeTaskId, draggedTaskId);
 };
 
 export {

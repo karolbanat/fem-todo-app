@@ -41,6 +41,20 @@ const hideShowTask = task => {
 	return filter;
 };
 
+const getTaskPosition = taskId => {
+	const taskElement = todoList.querySelector(`.task[data-id='${taskId}']`);
+	const taskY = taskElement.offsetTop;
+	const taskYEnd = taskElement.offsetHeight + taskY;
+	return { start: taskY, end: taskYEnd };
+};
+
+const taskReorder = (relativeTaskId, taskToInsertId, direction) => {
+	const relativeTaskElement = todoList.querySelector(`.task[data-id='${relativeTaskId}']`);
+	const taskToInsertElement = todoList.querySelector(`.task[data-id='${taskToInsertId}']`);
+	relativeTaskElement.insertAdjacentElement(direction === -1 ? 'beforebegin' : 'afterend', taskToInsertElement);
+	return direction;
+};
+
 const updateTodoCounter = () => {
 	const activeTasksCount = getActiveTasksCount();
 	const itemsForm = activeTasksCount === 1 ? 'item' : 'items';
@@ -48,4 +62,13 @@ const updateTodoCounter = () => {
 	return activeTasksCount;
 };
 
-export { setTheme, addTaskToList, indicateActiveFilter, filterList, hideShowTask, updateTodoCounter };
+export {
+	setTheme,
+	addTaskToList,
+	indicateActiveFilter,
+	filterList,
+	hideShowTask,
+	updateTodoCounter,
+	getTaskPosition,
+	taskReorder,
+};

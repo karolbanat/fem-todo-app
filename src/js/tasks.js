@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { addTaskToList, updateTodoCounter } from './dom-updates';
+import { addTaskToList, getTaskPosition, updateTodoCounter } from './dom-updates';
 import { todoList } from './elements';
 
 const TASK_STATES = {
@@ -39,10 +39,9 @@ const getActiveTasksCount = () => tasks.filter(task => task.status === TASK_STAT
 
 const findTaskOnPosition = posY => {
 	for (const task of tasks) {
-		const taskElement = todoList.querySelector(`.task[data-id='${task.id}']`);
-		const taskY = taskElement.offsetTop;
-		const taskYEnd = taskElement.offsetHeight + taskY;
-		if (taskY < posY && posY <= taskYEnd) return taskElement;
+		const { start, end } = getTaskPosition(task.id);
+		/* return task id with the top and bottom y coordinate */
+		if (start < posY && posY <= end) return { id: task.id, constraints: { start, end } };
 	}
 	return null;
 };
@@ -60,7 +59,7 @@ const insertTaskAfter = (relativeTaskId, insertTaskId) => {
 	const idx = getTaskIndex(relativeTaskId);
 	tasks.splice(Math.min(tasks.length, idx + 1), 0, taskToMove);
 	saveTasksToLocalStorage();
-	return idx;
+	return idx + 1;
 };
 
 const getTaskIndex = taskId => tasks.findIndex(task => task.id === taskId);
