@@ -1,5 +1,6 @@
 import { createTaskElement } from './element-creators';
 import { filterBtns, themeToggle, todoCounter, todoList } from './elements';
+import { FILTER_STATES, getCurrentFilter } from './filter-state';
 import { getActiveTasksCount } from './tasks';
 
 const setTheme = theme => {
@@ -10,36 +11,34 @@ const setTheme = theme => {
 
 const addTaskToList = task => {
 	const taskElement = createTaskElement(task);
+	hideShowTask(taskElement);
 	todoList.appendChild(taskElement);
 	return taskElement;
 };
 
-const indicateActiveFilter = filter => {
+const indicateActiveFilter = _ => {
 	removeActiveClassFromButtons();
+	const filter = getCurrentFilter();
 	const activeFilterBtns = document.querySelectorAll(`.filter-button[data-filter=${filter}`);
 	activeFilterBtns.forEach(btn => btn.classList.add('active'));
 };
 
 const removeActiveClassFromButtons = () => filterBtns.forEach(btn => btn.classList.remove('active'));
 
-const filterList = (filter = 'all') => {
-	if (filter === 'all') {
-		showAllTasks();
-		return filter;
-	}
+const filterList = () => {
+	const filter = getCurrentFilter();
 
 	const allTasks = todoList.querySelectorAll('.task');
-	for (const task of allTasks) {
-		if (task.dataset.status === filter) task.classList.remove('hidden');
-		else task.classList.add('hidden');
-	}
+	for (const task of allTasks) hideShowTask(task);
 
 	return filter;
 };
 
-const showAllTasks = () => {
-	const allTasks = todoList.querySelectorAll('.task');
-	for (const task of allTasks) task.classList.remove('hidden');
+const hideShowTask = task => {
+	const filter = getCurrentFilter();
+	if (filter === FILTER_STATES.default || task.dataset.status === filter) task.classList.remove('hidden');
+	else task.classList.add('hidden');
+	return filter;
 };
 
 const updateTodoCounter = () => {
@@ -49,4 +48,4 @@ const updateTodoCounter = () => {
 	return activeTasksCount;
 };
 
-export { setTheme, addTaskToList, indicateActiveFilter, filterList, showAllTasks, updateTodoCounter };
+export { setTheme, addTaskToList, indicateActiveFilter, filterList, hideShowTask, updateTodoCounter };

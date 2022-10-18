@@ -1,8 +1,9 @@
 import { changeColorTheme } from './theme';
 import { isBlank } from './helpers';
-import { addTaskToList, filterList, indicateActiveFilter, updateTodoCounter } from './dom-updates';
+import { addTaskToList, filterList, hideShowTask, indicateActiveFilter, updateTodoCounter } from './dom-updates';
 import { addTask, changeStatus, removeTask, TASK_STATES } from './tasks';
 import { themeToggle, todoForm, todoFormInput, todoList } from './elements';
+import { setCurrentFilter } from './filter-state';
 
 /* theme handling */
 const handleThemeToggle = e => {
@@ -39,6 +40,7 @@ const handleTaskSelection = e => {
 	const taskId = parentTask.dataset.id;
 	parentTask.dataset.status = taskNewStatus;
 	changeStatus(taskId, taskNewStatus);
+	hideShowTask(parentTask);
 	updateTodoCounter();
 };
 
@@ -54,8 +56,9 @@ const handleTaskDeletion = e => {
 /* action buttons handling */
 const handleFilterButton = e => {
 	const filter = e.target.dataset.filter;
-	indicateActiveFilter(filter);
-	filterList(filter);
+	setCurrentFilter(filter);
+	indicateActiveFilter();
+	filterList();
 };
 
 const handleClearCompletedButton = e => {
