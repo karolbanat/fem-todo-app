@@ -11,10 +11,9 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
+  - [What next in this project](#what-next-in-this-project)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -41,8 +40,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor Solution Page](https://your-solution-url.com)
-- Live Site URL: [GitHub Pages Site](https://your-live-site-url.com)
+- Solution URL: [Frontend Mentor Solution Page](https://www.frontendmentor.io/solutions/todo-app-vanilla-js-VwuTrkt6Fk)
+- Live Site URL: [GitHub Pages Site](https://karolbanat.github.io/fem-todo-app/)
 
 ## My process
 
