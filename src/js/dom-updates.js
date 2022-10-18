@@ -14,9 +14,10 @@ const addTaskToList = task => {
 	return taskElement;
 };
 
-const indicateActive = button => {
+const indicateActiveFilter = filter => {
 	removeActiveClassFromButtons();
-	button.classList.add('active');
+	const activeFilterBtns = document.querySelectorAll(`.filter-button[data-filter=${filter}`);
+	activeFilterBtns.forEach(btn => btn.classList.add('active'));
 };
 
 const removeActiveClassFromButtons = () => filterBtns.forEach(btn => btn.classList.remove('active'));
@@ -48,4 +49,4 @@ const updateTodoCounter = () => {
 	return activeTasksCount;
 };
 
-export { setTheme, addTaskToList, indicateActive, filterList, showAllTasks, updateTodoCounter };
+export { setTheme, addTaskToList, indicateActiveFilter, filterList, showAllTasks, updateTodoCounter };

@@ -1,6 +1,6 @@
 import { changeColorTheme } from './theme';
 import { isBlank } from './helpers';
-import { addTaskToList, filterList, indicateActive, updateTodoCounter } from './dom-updates';
+import { addTaskToList, filterList, indicateActiveFilter, updateTodoCounter } from './dom-updates';
 import { addTask, changeStatus, removeTask, TASK_STATES } from './tasks';
 import { themeToggle, todoForm, todoFormInput, todoList } from './elements';
 
@@ -54,7 +54,7 @@ const handleTaskDeletion = e => {
 /* action buttons handling */
 const handleFilterButton = e => {
 	const filter = e.target.dataset.filter;
-	indicateActive(e.target);
+	indicateActiveFilter(filter);
 	filterList(filter);
 };
 
