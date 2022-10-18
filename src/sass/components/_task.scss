@@ -6,6 +6,7 @@
 	padding-block: var(--spacer-rem-250);
 	padding-inline: var(--spacer-rem-450);
 	background-color: var(--bg-todo);
+	cursor: grab;
 
 	&:not(:last-child) {
 		border-bottom: 1px solid var(--task-border);
