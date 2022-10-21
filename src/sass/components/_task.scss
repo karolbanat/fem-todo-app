@@ -1,4 +1,7 @@
+@use '../abstracts/mixins' as mxn;
+
 .task {
+	position: relative;
 	display: grid;
 	grid-auto-flow: column;
 	grid-template-columns: auto 1fr auto;
@@ -6,6 +9,7 @@
 	padding-block: var(--spacer-rem-250);
 	padding-inline: var(--spacer-rem-450);
 	background-color: var(--bg-todo);
+	border-radius: var(--borr-200);
 	cursor: grab;
 
 	&:not(:last-child) {
@@ -37,5 +41,34 @@
 
 	&:is(:focus-within, :hover) &__delete-button {
 		visibility: visible;
+	}
+
+	&__move-controls {
+		--max-width: 3rem;
+		--right: var(--spacer-rem-400);
+		position: absolute;
+		right: calc(var(--right) * -1);
+		top: 50%;
+		translate: 0 -50%;
+		display: none;
+		flex-direction: column;
+		gap: var(--spacer-em-100);
+		width: var(--max-width);
+		@include mxn.mq(medium) {
+			--max-width: 5.4rem;
+			--right: var(--spacer-rem-650);
+		}
+	}
+
+	&:is(:focus-within, :hover) &__move-controls {
+		display: flex;
+	}
+
+	&:first-child &__move-controls > [data-direction='up'] {
+		display: none;
+	}
+
+	&:last-child &__move-controls > [data-direction='down'] {
+		display: none;
 	}
 }

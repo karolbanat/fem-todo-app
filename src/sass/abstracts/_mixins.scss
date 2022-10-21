@@ -25,6 +25,8 @@
 	--button-text-hover: var(--clr-neutral-700-light);
 	--button-text-active: var(--clr-primary-600-light);
 	--reorder-info: var(--clr-neutral-600-light);
+	--bg-move-button: var(--clr-neutral-200-light);
+	--move-button-icon: var(--clr-neutral-700-light);
 	@include mq(medium) {
 		--bg-image: url('../images/bg-desktop-light.jpg');
 	}
@@ -32,7 +34,7 @@
 
 @mixin theme-dark {
 	--bg-image: url('../images/bg-mobile-dark.jpg');
-	--shadow-clr: hsl(236 33% 92% / 0.5);
+	--shadow-clr: hsl(0 0% 0% / 0.4);
 	--bg-body: var(--clr-neutral-800-dark);
 	--body-copy: var(--clr-neutral-200-dark);
 	--bg-todo: var(--clr-neutral-700-dark);
@@ -47,6 +49,8 @@
 	--button-text-hover: var(--clr-neutral-200-dark);
 	--button-text-active: var(--clr-primary-600-dark);
 	--reorder-info: var(--clr-neutral-400-dark);
+	--bg-move-button: var(--clr-neutral-600-dark);
+	--move-button-icon: var(--clr-neutral-200-dark);
 	@include mq(medium) {
 		--bg-image: url('../images/bg-desktop-dark.jpg');
 	}

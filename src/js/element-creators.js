@@ -79,7 +79,7 @@ const createDeleteTaskButton = taskId => {
 
 const createMoveControls = taskId => {
 	const controlsContainer = document.createElement('div');
-	controlsContainer.classList.add('move-controls');
+	controlsContainer.classList.add('task__move-controls');
 	/* creating buttons */
 	const moveUpButton = createMoveButton(taskId, 'up');
 	const moveDownButton = createMoveButton(taskId, 'down');
@@ -91,8 +91,9 @@ const createMoveControls = taskId => {
 
 const createMoveButton = (taskId, direction = 'down') => {
 	const moveButton = document.createElement('button');
-	moveButton.classList.add('move-button', direction === 'down' ? 'move-button--down' : 'move-button--up');
+	moveButton.classList.add('move-button');
 	moveButton.setAttribute('aria-describedby', taskId);
+	moveButton.setAttribute('data-direction', direction);
 	/* hidden text */
 	const moveText = document.createElement('span');
 	moveText.classList.add('visually-hidden');
