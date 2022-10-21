@@ -19,10 +19,12 @@ const createTaskElement = ({ id, content, status }) => {
 	const checkboxButton = createCheckboxButton(id, status);
 	const taskLabel = createTaskLabel(id, content);
 	const deleteButton = createDeleteTaskButton(id);
+	const moveControls = createMoveControls();
 	/* and append them to task */
 	newTask.appendChild(checkboxButton);
 	newTask.appendChild(taskLabel);
 	newTask.appendChild(deleteButton);
+	newTask.appendChild(moveControls);
 	return newTask;
 };
 
@@ -73,6 +75,35 @@ const createDeleteTaskButton = taskId => {
 	deleteButton.appendChild(deleteText);
 	deleteButton.appendChild(deleteImage);
 	return deleteButton;
+};
+
+const createMoveControls = taskId => {
+	const controlsContainer = document.createElement('div');
+	controlsContainer.classList.add('move-controls');
+	/* creating buttons */
+	const moveUpButton = createMoveButton(taskId, 'up');
+	const moveDownButton = createMoveButton(taskId, 'down');
+	/* appending buttons */
+	controlsContainer.appendChild(moveUpButton);
+	controlsContainer.appendChild(moveDownButton);
+	return controlsContainer;
+};
+
+const createMoveButton = (taskId, direction = 'down') => {
+	const moveButton = document.createElement('button');
+	moveButton.classList.add('move-button', direction === 'down' ? 'move-button--down' : 'move-button--up');
+	moveButton.setAttribute('aria-describedby', taskId);
+	/* hidden text */
+	const moveText = document.createElement('span');
+	moveText.classList.add('visually-hidden');
+	moveText.innerText = `Move task ${direction}`;
+	/* icon */
+	const buttonIcon = document.createElement('i');
+	buttonIcon.classList.add('ti', `ti-chevron-${direction}`);
+	/* appending elements to button */
+	moveButton.appendChild(moveText);
+	moveButton.appendChild(buttonIcon);
+	return moveButton;
 };
 
 export { createTaskElement, createCheckboxButton, createTaskLabel, createDeleteTaskButton };
