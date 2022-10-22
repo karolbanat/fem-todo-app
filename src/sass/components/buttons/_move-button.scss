@@ -8,6 +8,10 @@
 	cursor: pointer;
 	transition: scale 0.25s ease;
 
+	& > * {
+		pointer-events: none;
+	}
+
 	&:hover,
 	&:focus {
 		scale: 1.05;

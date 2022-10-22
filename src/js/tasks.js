@@ -64,6 +64,16 @@ const insertTaskAfter = (relativeTaskId, insertTaskId) => {
 
 const getTaskIndex = taskId => tasks.findIndex(task => task.id === taskId);
 
+const getPreviousTask = taskId => {
+	const taskIndex = getTaskIndex(taskId);
+	return tasks[taskIndex - 1];
+};
+
+const getNextTask = taskId => {
+	const taskIndex = getTaskIndex(taskId);
+	return tasks[taskIndex + 1];
+};
+
 const loadTasks = () => {
 	loadTasksFromStorage();
 	/* adding task elements to DOM */
@@ -94,4 +104,6 @@ export {
 	findTaskOnPosition,
 	insertTaskBefore,
 	insertTaskAfter,
+	getPreviousTask,
+	getNextTask,
 };

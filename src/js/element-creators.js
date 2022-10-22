@@ -1,4 +1,10 @@
-import { handleTaskSelection, handleTaskDeletion, handleTaskDragStart } from './event-handlers';
+import {
+	handleTaskSelection,
+	handleTaskDeletion,
+	handleTaskDragStart,
+	handleMoveTaskUpButton,
+	handleMoveTaskDownButton,
+} from './event-handlers';
 import { TASK_STATES } from './tasks';
 
 const IMAGE_SRC = {
@@ -94,6 +100,7 @@ const createMoveButton = (taskId, direction = 'down') => {
 	moveButton.classList.add('move-button');
 	moveButton.setAttribute('aria-describedby', taskId);
 	moveButton.setAttribute('data-direction', direction);
+	moveButton.addEventListener('click', direction === 'up' ? handleMoveTaskUpButton : handleMoveTaskDownButton);
 	/* hidden text */
 	const moveText = document.createElement('span');
 	moveText.classList.add('visually-hidden');

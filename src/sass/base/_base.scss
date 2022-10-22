@@ -14,6 +14,7 @@ body {
 	background-size: contain;
 	background-position: top;
 	// bg-image end
+	overflow-x: hidden;
 	transition: background-color 0.35s ease, color 0.35s ease;
 	@media (prefers-color-scheme: dark) {
 		@include mxn.theme-dark;

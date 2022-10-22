@@ -13,6 +13,8 @@ import {
 	addTask,
 	changeStatus,
 	findTaskOnPosition,
+	getNextTask,
+	getPreviousTask,
 	insertTaskAfter,
 	insertTaskBefore,
 	removeTask,
@@ -112,6 +114,22 @@ const handleTaskDrop = e => {
 	else insertTaskAfter(relativeTaskId, draggedTaskId);
 };
 
+const handleMoveTaskUpButton = e => {
+	const currentTask = e.target.closest('.task');
+	const currentTaskId = currentTask.dataset.id;
+	const previousTaskId = getPreviousTask(currentTaskId).id;
+	taskReorder(previousTaskId, currentTaskId, -1);
+	insertTaskBefore(previousTaskId, currentTaskId);
+};
+
+const handleMoveTaskDownButton = e => {
+	const currentTask = e.target.closest('.task');
+	const currentTaskId = currentTask.dataset.id;
+	const nextTaskId = getNextTask(currentTaskId).id;
+	taskReorder(nextTaskId, currentTaskId, 1);
+	insertTaskAfter(nextTaskId, currentTaskId);
+};
+
 export {
 	handleThemeToggle,
 	handleFormSubmission,
@@ -122,4 +140,6 @@ export {
 	handleTaskDragStart,
 	handleDragOver,
 	handleTaskDrop,
+	handleMoveTaskUpButton,
+	handleMoveTaskDownButton,
 };
