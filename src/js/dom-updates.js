@@ -6,6 +6,8 @@ import { getActiveTasksCount } from './tasks';
 const setTheme = theme => {
 	document.body.setAttribute('data-theme', theme);
 	themeToggle.dataset.theme = theme;
+	const label = `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`;
+	themeToggle.setAttribute('aria-label', label);
 	return theme;
 };
 
@@ -71,8 +73,7 @@ const getTaskPosition = taskId => {
 const taskReorder = (relativeTaskId, taskToInsertId, direction) => {
 	const relativeTaskElement = todoList.querySelector(`.task[data-id='${relativeTaskId}']`);
 	const taskToInsertElement = todoList.querySelector(`.task[data-id='${taskToInsertId}']`);
-	relativeTaskElement.insertAdjacentElement(direction === -1 ? 'beforebegin' : 'afterend', taskToInsertElement);
-	return direction;
+	return relativeTaskElement.insertAdjacentElement(direction === -1 ? 'beforebegin' : 'afterend', taskToInsertElement);
 };
 
 const updateTodoCounter = () => {
