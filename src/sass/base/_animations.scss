@@ -1,0 +1,18 @@
+@keyframes task-add {
+	from {
+		translate: -50% 0;
+		opacity: 0.25;
+	}
+	to {
+		translate: 0 0;
+		opacity: 1;
+	}
+}
+
+.task-add-animation {
+	animation: task-add 1s ease-out;
+}
+
+.task-remove-animation {
+	animation: task-add 0.5s ease-out reverse;
+}

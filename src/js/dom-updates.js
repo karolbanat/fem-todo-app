@@ -13,7 +13,27 @@ const addTaskToList = task => {
 	const taskElement = createTaskElement(task);
 	hideShowTask(taskElement);
 	todoList.appendChild(taskElement);
+	taskElement.classList.add('task-add-animation');
+	taskElement.addEventListener(
+		'animationend',
+		() => {
+			taskElement.classList.remove('task-add-animation');
+		},
+		{ once: true }
+	);
 	return taskElement;
+};
+
+const removeTaskElement = taskElement => {
+	taskElement.classList.add('task-remove-animation');
+	taskElement.addEventListener(
+		'animationend',
+		() => {
+			taskElement.classList.remove('task-remove-animation');
+			taskElement.remove();
+		},
+		{ once: true }
+	);
 };
 
 const indicateActiveFilter = _ => {
@@ -65,6 +85,7 @@ const updateTodoCounter = () => {
 export {
 	setTheme,
 	addTaskToList,
+	removeTaskElement,
 	indicateActiveFilter,
 	filterList,
 	hideShowTask,

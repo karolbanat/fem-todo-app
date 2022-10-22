@@ -3,9 +3,9 @@ import { isBlank } from './helpers';
 import {
 	addTaskToList,
 	filterList,
-	getTaskPosition,
 	hideShowTask,
 	indicateActiveFilter,
+	removeTaskElement,
 	taskReorder,
 	updateTodoCounter,
 } from './dom-updates';
@@ -67,7 +67,7 @@ const handleTaskDeletion = e => {
 	const parentTask = deleteBtn.closest('.task');
 	const taskId = parentTask.dataset.id;
 	removeTask(taskId);
-	parentTask.remove();
+	removeTaskElement(parentTask);
 	updateTodoCounter();
 };
 
@@ -84,12 +84,13 @@ const handleClearCompletedButton = e => {
 	for (const task of allTasks) {
 		if (task.dataset.status === TASK_STATES.completed) {
 			removeTask(task.dataset.id);
-			task.remove();
+			removeTaskElement(task);
 		}
 	}
 	updateTodoCounter();
 };
 
+/* drag and drop handling */
 const handleTaskDragStart = e => {
 	e.dataTransfer.setData('text/plain', e.target.dataset.id);
 };
@@ -114,6 +115,7 @@ const handleTaskDrop = e => {
 	else insertTaskAfter(relativeTaskId, draggedTaskId);
 };
 
+/* reordering buttons handling */
 const handleMoveTaskUpButton = e => {
 	const currentTask = e.target.closest('.task');
 	const currentTaskId = currentTask.dataset.id;
